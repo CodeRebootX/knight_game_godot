@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://sv1oef118c3n"]
+
+[ext_resource type="Script" path="res://golem/arm_projectile.gd" id="1_0ke16"]
+[ext_resource type="Texture2D" uid="uid://c50clvi717l7n" path="res://assets/golem_assets/proyectiles/arm_projectile_glowing.png" id="1_e5iam"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64cuj"]
+size = Vector2(42, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muof1"]
+atlas = ExtResource("1_e5iam")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvao7"]
+atlas = ExtResource("1_e5iam")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6otuy"]
+atlas = ExtResource("1_e5iam")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lw2er"]
+atlas = ExtResource("1_e5iam")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5upv4"]
+atlas = ExtResource("1_e5iam")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl74k"]
+atlas = ExtResource("1_e5iam")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_btif5"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muof1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvao7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6otuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lw2er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5upv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl74k")
+}],
+"loop": true,
+"name": &"projectile_animation",
+"speed": 5.0
+}]
+
+[node name="arm_projectile" type="Area2D" groups=["enemys"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_0ke16")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemys"]]
+position = Vector2(28, -12)
+shape = SubResource("RectangleShape2D_64cuj")
+debug_color = Color(0.949357, 0.164145, 0.39779, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_btif5")
+animation = &"projectile_animation"
+frame_progress = 0.318107
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

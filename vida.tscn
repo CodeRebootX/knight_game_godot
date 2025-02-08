@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpe2wwdpw2hma"]
+
+[ext_resource type="Script" path="res://vida.gd" id="1_oe1bs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0il7b"]
+bg_color = Color(0.879337, 0.288701, 0.959511, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q653b"]
+bg_color = Color(0.210489, 0.680439, 0.654543, 1)
+
+[node name="vida" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_oe1bs")
+
+[node name="barra_vida" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0il7b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q653b")
+value = 100.0
+show_percentage = false

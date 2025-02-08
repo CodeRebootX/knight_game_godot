@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Godot 4+ specific ignores
 .godot/
 
@@ -13,3 +14,6 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+*.zip
+
+>>>>>>> 0a10335 (Subiendo proyecto de Godot)
