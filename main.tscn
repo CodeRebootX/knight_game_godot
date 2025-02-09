@@ -3,24 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://dnod8j6o0v8x7" path="res://caballero.tscn" id="1_xw1dm"]
 [ext_resource type="PackedScene" uid="uid://c7t5dgumymfkb" path="res://golem.tscn" id="2_2lyvo"]
 [ext_resource type="PackedScene" uid="uid://dokqc7hwjekip" path="res://mundo.tscn" id="3_cme63"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0cn0"]
-size = Vector2(1146, 35)
+[ext_resource type="PackedScene" uid="uid://2i0aooynphpw" path="res://Start_GUI.tscn" id="4_vmswg"]
 
 [node name="main" type="Node"]
 
-[node name="knight" parent="." instance=ExtResource("1_xw1dm")]
-position = Vector2(40, 494)
+[node name="Node" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="mundo" parent="Node" instance=ExtResource("3_cme63")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(575, 596.5)
-shape = SubResource("RectangleShape2D_i0cn0")
-debug_color = Color(0.103153, 0.597106, 0.695596, 0.42)
+[node name="knight" parent="Node" instance=ExtResource("1_xw1dm")]
+position = Vector2(2655, 133)
 
-[node name="golem" parent="." instance=ExtResource("2_2lyvo")]
-position = Vector2(251, 491)
-scale = Vector2(4, 4)
+[node name="golem" parent="Node" instance=ExtResource("2_2lyvo")]
+position = Vector2(73, 414)
+scale = Vector2(3.8, 3.8)
 
-[node name="TileMapLayer" parent="." instance=ExtResource("3_cme63")]
+[node name="Start_screen" parent="." node_paths=PackedStringArray("nivel") instance=ExtResource("4_vmswg")]
+nivel = NodePath("../Node")

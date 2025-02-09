@@ -62,16 +62,17 @@ animations = [{
 }]
 
 [node name="arm_projectile" type="Area2D" groups=["enemys"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_0ke16")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemys"]]
+[node name="projectile_collision" type="CollisionShape2D" parent="." groups=["enemys"]]
 position = Vector2(28, -12)
 shape = SubResource("RectangleShape2D_64cuj")
 debug_color = Color(0.949357, 0.164145, 0.39779, 0.42)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="projectile_Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_btif5")
 animation = &"projectile_animation"
 frame_progress = 0.318107

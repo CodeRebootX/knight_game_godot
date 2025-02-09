@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://c7t5dgumymfkb"]
+[gd_scene load_steps=65 format=3 uid="uid://c7t5dgumymfkb"]
 
 [ext_resource type="Texture2D" uid="uid://b76y7xecduqbw" path="res://assets/golem_assets/Character_sheet.png" id="1_1cjo4"]
 [ext_resource type="Script" path="res://golem.gd" id="1_lkoqa"]
@@ -7,6 +7,22 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcs7l"]
 size = Vector2(20, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iclnu"]
+atlas = ExtResource("1_1cjo4")
+region = Rect2(0, 800, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dkev"]
+atlas = ExtResource("1_1cjo4")
+region = Rect2(100, 800, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6trc"]
+atlas = ExtResource("1_1cjo4")
+region = Rect2(200, 800, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0aksf"]
+atlas = ExtResource("1_1cjo4")
+region = Rect2(300, 800, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0mlh6"]
 atlas = ExtResource("1_1cjo4")
@@ -110,6 +126,23 @@ region = Rect2(600, 200, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vikcv"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iclnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dkev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6trc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0aksf")
+}],
+"loop": true,
+"name": &"death_animation",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -654,9 +687,37 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_2r1au"]
+resource_name = "death_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("movible/golem_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"death_animation"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("movible/golem_sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q1vol"]
 _data = {
 "RESET": SubResource("Animation_j360e"),
+"death_animation": SubResource("Animation_2r1au"),
 "idle_animation": SubResource("Animation_nma18"),
 "laser_animation": SubResource("Animation_cbxu6"),
 "melet_animation": SubResource("Animation_pi48g"),
@@ -678,7 +739,7 @@ sprite_frames = SubResource("SpriteFrames_vikcv")
 animation = &"laser_animation"
 
 [node name="projectile_position" type="Marker2D" parent="movible"]
-position = Vector2(19, 16)
+position = Vector2(28, 20)
 
 [node name="laser" type="Node2D" parent="movible"]
 
@@ -716,7 +777,7 @@ shape = SubResource("RectangleShape2D_uahmm")
 debug_color = Color(0.636319, 0.340885, 1, 0.42)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -724,7 +785,7 @@ libraries = {
 "": SubResource("AnimationLibrary_q1vol")
 }
 
-[node name="vida_golem" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("4_0he7h")]
+[node name="vida_golem" parent="." node_paths=PackedStringArray("parent", "anim_player") instance=ExtResource("4_0he7h")]
 offset_left = -20.0
 offset_top = -40.0
 offset_right = 20.0
@@ -733,6 +794,7 @@ scale = Vector2(0.4, 0.4)
 max_health = 100.0
 parent = NodePath("..")
 health = 100.0
+anim_player = NodePath("../AnimationPlayer")
 
 [connection signal="area_shape_entered" from="movible/hurtbox" to="." method="_on_hurtbox_area_shape_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

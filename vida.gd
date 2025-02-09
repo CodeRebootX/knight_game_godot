@@ -3,9 +3,10 @@ class_name health_component extends Control
 @export var max_health: float
 @export var parent: Node2D
 @export var health: float
+@export var anim_player: AnimationPlayer
 
 func update_bar():
-	$barra_vida.value=health
+	$halth_bar.value=health
 
 func regen_health(healing : float): 
 	health=min(health+healing, max_health)
@@ -15,13 +16,23 @@ func get_damage (damage : float):
 	health -= damage
 	update_bar()
 	if health<=0:
-		parent.queue_free()
+		die()
+	
+	
+func die():
+	if anim_player and anim_player.has_animation("death_animation"):
+		anim_player.play("death_animation") 
+		await anim_player.animation_finished  
+	
+	GameManager.restart_game()
+	parent.queue_free()
+	
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	$barra_vida.max_value=max_health
-	$barra_vida.value=health
-	pass # Replace with function body.
+	$halth_bar.max_value=max_health
+	$halth_bar.value=health
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
