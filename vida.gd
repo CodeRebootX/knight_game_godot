@@ -18,23 +18,18 @@ func get_damage (damage : float):
 	if health<=0:
 		die()
 	
-	
 func die():
 	if anim_player and anim_player.has_animation("death_animation"):
 		anim_player.play("death_animation") 
 		await anim_player.animation_finished  
-	
-	GameManager.restart_game()
+	parent.process_mode=Node.PROCESS_MODE_DISABLED
 	parent.queue_free()
-	
-
+	GameManager.restart_game()
 
 func _ready() -> void:
 	$halth_bar.max_value=max_health
 	$halth_bar.value=health
 	
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

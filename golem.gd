@@ -11,8 +11,7 @@ func _ready() -> void:
 	$AnimationPlayer.play("idle_animation")
 	animation_finished=false
 
-func _process(delta: float) -> void:
-	
+func _process(delta: float) -> void:	
 	#$AnimationPlayer.play("idle_animation")
 	pass
 
@@ -41,17 +40,15 @@ func _on_timer_timeout() -> void:
 			$AnimationPlayer.play("melet_animation")
 		3:
 			$AnimationPlayer.play("projectile_animation")
+	
 	await $AnimationPlayer.animation_finished
 	
 	$AnimationPlayer.play("idle_animation")
 	
 	n = rng.randi_range(2,3)
 	$Timer.wait_time = n
-		
 	$Timer.start()
 		
 func _on_hurtbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.is_in_group('knight'):
-		print("daño")
 		$vida_golem.get_damage(1)
-	

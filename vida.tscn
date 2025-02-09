@@ -16,6 +16,7 @@ offset_bottom = 40.0
 script = ExtResource("1_oe1bs")
 
 [node name="halth_bar" type="ProgressBar" parent="."]
+layout_mode = 0
 offset_right = 100.0
 offset_bottom = 10.0
 theme_override_styles/background = SubResource("StyleBoxFlat_0il7b")

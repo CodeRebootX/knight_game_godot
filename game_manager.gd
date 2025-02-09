@@ -1,7 +1,4 @@
 extends Node
-
-
-
 	
 func restart_game():
 	if get_tree():

@@ -4,7 +4,6 @@ extends "res://knight_state.gd"
 func enter_state():
 	animation_player.play("crouch_walk_animation")
 
-
 func process_state():
 	var direction=Input.get_axis("move_left","move_right")
 	

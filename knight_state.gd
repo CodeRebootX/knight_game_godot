@@ -7,14 +7,11 @@ class_name knight_state extends Node
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 
-
 func enter_state():
 	pass
 
-
 func process_state():
 	pass
-
 
 func exit_state():
 	pass
