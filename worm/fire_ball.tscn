@@ -1,0 +1,145 @@
+[gd_scene load_steps=14 format=3 uid="uid://dm5tlbbf0vak7"]
+
+[ext_resource type="Script" path="res://worm/fire_ball.gd" id="1_8p6my"]
+[ext_resource type="Texture2D" uid="uid://8vq7q4p3e0jq" path="res://assets/Monster_Creatures_Fantasy/Fire Worm/Sprites/Fire Ball/Move.png" id="1_g1heq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wrebk"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43rij"]
+atlas = ExtResource("1_g1heq")
+region = Rect2(0, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpflq"]
+atlas = ExtResource("1_g1heq")
+region = Rect2(46, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofvlt"]
+atlas = ExtResource("1_g1heq")
+region = Rect2(92, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfis1"]
+atlas = ExtResource("1_g1heq")
+region = Rect2(138, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7ofs"]
+atlas = ExtResource("1_g1heq")
+region = Rect2(184, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve2k2"]
+atlas = ExtResource("1_g1heq")
+region = Rect2(230, 0, 46, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_truu7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43rij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpflq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofvlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfis1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7ofs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve2k2")
+}],
+"loop": false,
+"name": &"ball_animation",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_n8usx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ball_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"ball_animation"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ball_sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0luec"]
+resource_name = "ball_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ball_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"ball_animation"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ball_sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sqkrj"]
+_data = {
+"RESET": SubResource("Animation_n8usx"),
+"ball_animation": SubResource("Animation_0luec")
+}
+
+[node name="fire_ball" type="Area2D"]
+script = ExtResource("1_8p6my")
+
+[node name="ball_collision" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_wrebk")
+debug_color = Color(0.959572, 1.54018e-06, 0.520881, 0.42)
+
+[node name="ball_sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_truu7")
+animation = &"ball_animation"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sqkrj")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

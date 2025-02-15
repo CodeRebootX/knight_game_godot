@@ -4,6 +4,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$CanvasLayer.visible=true
 	if not nivel:
 		var main_node = get_parent()
 		if main_node and main_node.has_node("Node"):

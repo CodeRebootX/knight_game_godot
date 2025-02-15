@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c7t5dgumymfkb"]
+[gd_scene load_steps=66 format=3 uid="uid://c7t5dgumymfkb"]
 
 [ext_resource type="Texture2D" uid="uid://b76y7xecduqbw" path="res://assets/golem_assets/Character_sheet.png" id="1_1cjo4"]
 [ext_resource type="Script" path="res://golem.gd" id="1_lkoqa"]
@@ -724,6 +724,9 @@ _data = {
 "projectile_animation": SubResource("Animation_ugc3i")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2mw3"]
+size = Vector2(255, 155)
+
 [node name="golem" type="CharacterBody2D"]
 collision_layer = 5
 script = ExtResource("1_lkoqa")
@@ -796,5 +799,13 @@ parent = NodePath("..")
 health = 100.0
 anim_player = NodePath("../AnimationPlayer")
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(80.5, 5.5)
+shape = SubResource("RectangleShape2D_q2mw3")
+
 [connection signal="area_shape_entered" from="movible/hurtbox" to="." method="_on_hurtbox_area_shape_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

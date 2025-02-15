@@ -1569,7 +1569,7 @@ _data = {
 "slide_animation": SubResource("Animation_qxxuu")
 }
 
-[node name="knight" type="CharacterBody2D"]
+[node name="knight" type="CharacterBody2D" groups=["knight"]]
 scale = Vector2(3, 3)
 collision_layer = 5
 script = ExtResource("1_hnigu")
@@ -1693,6 +1693,6 @@ anim_player = NodePath("../../AnimationPlayer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0.666667, -31)
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.5, 0.5)
 
 [connection signal="area_shape_entered" from="movible/knight_hurtbox" to="." method="_on_knight_hurtbox_area_shape_entered"]

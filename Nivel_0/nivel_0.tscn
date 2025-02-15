@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw54f3qugmg3e"]
+
+[ext_resource type="PackedScene" uid="uid://dnggq1ssnfba8" path="res://mundo_2.tscn" id="1_e4a32"]
+[ext_resource type="PackedScene" uid="uid://dnod8j6o0v8x7" path="res://caballero.tscn" id="2_a4jnt"]
+[ext_resource type="PackedScene" uid="uid://xynscfrkku6y" path="res://worm/worm.tscn" id="3_w2un6"]
+
+[node name="Node" type="Node"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="TileMapLayer" parent="Node2D" instance=ExtResource("1_e4a32")]
+
+[node name="knight" parent="Node2D" instance=ExtResource("2_a4jnt")]
+position = Vector2(1671, 541)
+
+[node name="worm" parent="Node2D" instance=ExtResource("3_w2un6")]
+position = Vector2(130, 576)
+scale = Vector2(2, 2)

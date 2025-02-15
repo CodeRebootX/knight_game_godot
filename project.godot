@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GameManager="*res://game_manager.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 enemys="hitbox que hacen daño al caballero"

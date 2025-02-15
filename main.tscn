@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnfjuaucitf4k"]
+[gd_scene load_steps=8 format=3 uid="uid://bnfjuaucitf4k"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_so32j"]
 [ext_resource type="PackedScene" uid="uid://dnod8j6o0v8x7" path="res://caballero.tscn" id="1_xw1dm"]
 [ext_resource type="PackedScene" uid="uid://c7t5dgumymfkb" path="res://golem.tscn" id="2_2lyvo"]
 [ext_resource type="PackedScene" uid="uid://dokqc7hwjekip" path="res://mundo.tscn" id="3_cme63"]
 [ext_resource type="PackedScene" uid="uid://2i0aooynphpw" path="res://Start_GUI.tscn" id="4_vmswg"]
+[ext_resource type="PackedScene" uid="uid://xynscfrkku6y" path="res://worm/worm.tscn" id="5_f4qog"]
+[ext_resource type="PackedScene" uid="uid://bw30yg8ejh87x" path="res://Nivel_0/bat.tscn" id="7_kynfy"]
 
 [node name="main" type="Node"]
+script = ExtResource("1_so32j")
+
+[node name="Start_screen" parent="." node_paths=PackedStringArray("nivel") instance=ExtResource("4_vmswg")]
+nivel = NodePath("../Node")
 
 [node name="Node" type="Node2D" parent="."]
 
@@ -18,5 +25,10 @@ position = Vector2(2655, 133)
 position = Vector2(73, 414)
 scale = Vector2(3.8, 3.8)
 
-[node name="Start_screen" parent="." node_paths=PackedStringArray("nivel") instance=ExtResource("4_vmswg")]
-nivel = NodePath("../Node")
+[node name="worm" parent="Node" instance=ExtResource("5_f4qog")]
+position = Vector2(2101, 328)
+scale = Vector2(3, 3)
+
+[node name="bat" parent="Node" instance=ExtResource("7_kynfy")]
+position = Vector2(2117, 282)
+scale = Vector2(2.5, 2.5)
