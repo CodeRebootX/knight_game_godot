@@ -1,5 +1,7 @@
 extends "res://knight_state.gd"
 
+@onready var vida = knight.get_node("CanvasLayer/vida")
+
 func enter_state():
 	pass
 

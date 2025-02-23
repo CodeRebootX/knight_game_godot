@@ -121,10 +121,12 @@ _data = {
 "ball_animation": SubResource("Animation_0luec")
 }
 
-[node name="fire_ball" type="Area2D"]
+[node name="fire_ball" type="Area2D" groups=["enemys"]]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_8p6my")
 
-[node name="ball_collision" type="CollisionShape2D" parent="."]
+[node name="ball_collision" type="CollisionShape2D" parent="." groups=["enemys"]]
 position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_wrebk")
 debug_color = Color(0.959572, 1.54018e-06, 0.520881, 0.42)

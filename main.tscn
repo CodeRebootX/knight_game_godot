@@ -19,16 +19,68 @@ nivel = NodePath("../Node")
 [node name="mundo" parent="Node" instance=ExtResource("3_cme63")]
 
 [node name="knight" parent="Node" instance=ExtResource("1_xw1dm")]
-position = Vector2(2655, 133)
+position = Vector2(8941, 421)
 
 [node name="golem" parent="Node" instance=ExtResource("2_2lyvo")]
+z_index = 1
 position = Vector2(73, 414)
 scale = Vector2(3.8, 3.8)
 
-[node name="worm" parent="Node" instance=ExtResource("5_f4qog")]
-position = Vector2(2101, 328)
-scale = Vector2(3, 3)
+[node name="bats" type="Node2D" parent="Node"]
 
-[node name="bat" parent="Node" instance=ExtResource("7_kynfy")]
-position = Vector2(2117, 282)
+[node name="bat" parent="Node/bats" groups=["enemys_sec"] instance=ExtResource("7_kynfy")]
+position = Vector2(7654, 188)
 scale = Vector2(2.5, 2.5)
+move_range = 300.0
+
+[node name="bat2" parent="Node/bats" groups=["enemys_sec"] instance=ExtResource("7_kynfy")]
+position = Vector2(7028, 176)
+scale = Vector2(2.5, 2.5)
+move_range = 400.0
+
+[node name="bat3" parent="Node/bats" groups=["enemys_sec"] instance=ExtResource("7_kynfy")]
+position = Vector2(6385, 185)
+scale = Vector2(2.5, 2.5)
+move_range = 300.0
+
+[node name="bat4" parent="Node/bats" groups=["enemys_sec"] instance=ExtResource("7_kynfy")]
+position = Vector2(987, -53)
+scale = Vector2(2.5, 2.5)
+move_range = 500.0
+
+[node name="bat5" parent="Node/bats" groups=["enemys_sec"] instance=ExtResource("7_kynfy")]
+position = Vector2(3833, 179)
+scale = Vector2(2.5, 2.5)
+move_range = 300.0
+
+[node name="bat7" parent="Node/bats" groups=["enemys_sec"] instance=ExtResource("7_kynfy")]
+position = Vector2(2252, 192)
+scale = Vector2(2.5, 2.5)
+move_range = 300.0
+
+[node name="bat8" parent="Node/bats" groups=["enemys_sec"] instance=ExtResource("7_kynfy")]
+position = Vector2(356, 176)
+scale = Vector2(2.5, 2.5)
+move_range = 100.0
+
+[node name="worms" type="Node2D" parent="Node"]
+
+[node name="worm" parent="Node/worms" groups=["enemys_sec"] instance=ExtResource("5_f4qog")]
+position = Vector2(5111, 438)
+scale = Vector2(3, 3)
+move_range = 500.0
+
+[node name="worm2" parent="Node/worms" groups=["enemys_sec"] instance=ExtResource("5_f4qog")]
+position = Vector2(3094, 439)
+scale = Vector2(3, 3)
+move_range = 250.0
+
+[node name="worm3" parent="Node/worms" groups=["enemys_sec"] instance=ExtResource("5_f4qog")]
+position = Vector2(1539, 437)
+scale = Vector2(3, 3)
+move_range = 300.0
+
+[node name="worm4" parent="Node/worms" groups=["enemys_sec"] instance=ExtResource("5_f4qog")]
+position = Vector2(3169, -225)
+scale = Vector2(2.5, 2.5)
+move_range = 100.0

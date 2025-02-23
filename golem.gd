@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @export var animation_finished=false
 var activated = false
+@onready var death=$vida_golem
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -12,8 +13,15 @@ func _ready() -> void:
 	animation_finished=false
 
 func _process(delta: float) -> void:	
-	
-	pass
+	if not activated:
+		$AnimationPlayer.play("idle_animation")
+	if death.is_death:
+		$AnimationPlayer.play("death_animation")
+		await $AnimationPlayer.animation_finished
+		process_mode=Node.PROCESS_MODE_DISABLED
+		queue_free()
+		GameManager.restart_game()
+
 
 func _physics_process(delta: float) -> void:
 	pass

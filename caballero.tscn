@@ -1694,5 +1694,7 @@ anim_player = NodePath("../../AnimationPlayer")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0.666667, -31)
 zoom = Vector2(0.5, 0.5)
+limit_left = -50
+limit_right = 9000
 
 [connection signal="area_shape_entered" from="movible/knight_hurtbox" to="." method="_on_knight_hurtbox_area_shape_entered"]

@@ -10,6 +10,8 @@ func _process(delta: float) -> void:
 	current_state.process_state()
 
 func change_state(next_state: knight_state):
+	if current_state == next_state:
+		return
 	print("exit: "+ current_state.name)
 	current_state.exit_state()
 	current_state=next_state

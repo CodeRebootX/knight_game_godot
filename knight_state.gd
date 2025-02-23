@@ -4,8 +4,9 @@ class_name knight_state extends Node
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 @onready var knight_machine_state: Node = $".."
 
+
 const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -700.0
 
 func enter_state():
 	pass
